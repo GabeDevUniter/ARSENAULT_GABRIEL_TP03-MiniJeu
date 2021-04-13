@@ -51,8 +51,6 @@ public class PlayerMovement : MonoBehaviour
 
     CharacterController CharacterController;
 
-    Rigidbody rb;
-
     Vector3 playerVelocity = Vector3.zero;
 
     public Vector3 HeadPosition => Cam.transform.position;
@@ -60,7 +58,6 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         CharacterController = GetComponent<CharacterController>();
-        rb = GetComponent<Rigidbody>();
 
         CharacterController.detectCollisions = false;
 
@@ -101,8 +98,7 @@ public class PlayerMovement : MonoBehaviour
 
         Move();
 
-        //CharacterController.Move(playerVelocity * Time.fixedDeltaTime);
-        rb.AddForce(playerVelocity * Time.fixedDeltaTime);
+        CharacterController.Move(playerVelocity * Time.fixedDeltaTime);
     }
 
     #region Movements
