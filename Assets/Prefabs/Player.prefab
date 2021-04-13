@@ -139,7 +139,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3383
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -170,7 +170,6 @@ GameObject:
   - component: {fileID: 697146008411202188}
   - component: {fileID: 697146008411202191}
   - component: {fileID: 697146008411202190}
-  - component: {fileID: 697146008411202185}
   - component: {fileID: 697146008411202189}
   - component: {fileID: 1879868654024578104}
   - component: {fileID: 697146008411202178}
@@ -244,20 +243,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &697146008411202185
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697146008411202184}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!143 &697146008411202189
 CharacterController:
   m_ObjectHideFlags: 0
