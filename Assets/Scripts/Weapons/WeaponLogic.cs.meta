@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f44812dd67bf71743be50c9d67b308e0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - muzzleFlash: {instanceID: 0}
+  - bloodSplatter: {fileID: 5689868435619333013, guid: 1aa6e3d5851b6b24eab795e12cd4858e,
+      type: 3}
+  - bulletImpact: {fileID: 100002, guid: ab7c54a285e749148b48f32796ddf885, type: 3}
+  - trail: {instanceID: 0}
+  - audio_fire: {instanceID: 0}
+  - audio_reload: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
