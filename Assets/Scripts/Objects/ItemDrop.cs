@@ -89,6 +89,9 @@ public class ItemDrop : MonoBehaviour
 
         GameManager.singleton.GUI.sendMessage($"Ramassé {itemName}");
 
+        GetComponentInChildren<MeshRenderer>().enabled = false;
+        Item.SetActive(false);
+
         if(SoundEffect != null)
         {
             SoundEffect.Play();
