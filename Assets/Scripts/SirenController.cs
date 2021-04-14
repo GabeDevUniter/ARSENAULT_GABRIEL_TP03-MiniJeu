@@ -80,6 +80,7 @@ public class SirenController : MonoBehaviour
         int index = System.Convert.ToInt16(currentSide);
 
         light.transform.position = points[index].position;
+        light.transform.rotation = points[index].rotation;
 
         light.range = Range[index];
         
