@@ -14,6 +14,9 @@ public class ItemDrop : MonoBehaviour
     [SerializeField]
     private Transform FloatPoint;
 
+    [SerializeField]
+    private bool teleportToGround = true;
+
     private AudioSource SoundEffect;
 
     private bool isPicked = false;
@@ -24,14 +27,17 @@ public class ItemDrop : MonoBehaviour
 
         SoundEffect = GetComponent<AudioSource>();
 
-        // Teleport the item to the ground if it's floating, really useful for items dropped by NPCs
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 100f, 11))
+        if(teleportToGround)
         {
-            transform.position = hit.point;
-        }
-        else
-        {
-            Destroy(gameObject);
+            // Teleport the item to the ground if it's floating, really useful for items dropped by NPCs
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 100f, 11))
+            {
+                transform.position = hit.point;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
