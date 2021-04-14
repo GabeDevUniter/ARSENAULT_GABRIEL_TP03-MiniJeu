@@ -59,8 +59,6 @@ public class PlayerMovement : MonoBehaviour
     {
         CharacterController = GetComponent<CharacterController>();
 
-        CharacterController.detectCollisions = false;
-
         Cam = GetComponentInChildren<Camera>();
 
         rotX = transform.rotation.eulerAngles.y;
