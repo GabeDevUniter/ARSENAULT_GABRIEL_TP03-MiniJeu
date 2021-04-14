@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44659364, g: 0.4964301, b: 0.5748256, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -64,7 +64,8 @@ LightmapSettings:
     m_CompAOExponentDirect: 0
     m_ExtractAmbientOcclusion: 0
     m_Padding: 2
-    m_LightmapParameters: {fileID: 0}
+    m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000,
+      type: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
     m_FinalGather: 0
@@ -135,7 +136,7 @@ GameObject:
   - component: {fileID: 94909013}
   - component: {fileID: 94909012}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,6 +270,16 @@ PrefabInstance:
     - target: {fileID: 437054, guid: 8a0a25944112546aeb12aed3ac6f8528, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835142775748039052, guid: 8a0a25944112546aeb12aed3ac6f8528,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.599
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835142775748039052, guid: 8a0a25944112546aeb12aed3ac6f8528,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.818
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a25944112546aeb12aed3ac6f8528, type: 3}
@@ -801,7 +812,7 @@ GameObject:
   - component: {fileID: 1151053095}
   - component: {fileID: 1151053094}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,6 +900,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1509406411612162661, guid: ec72edb3554724941811d626d1ebced7,
+        type: 3}
+      propertyPath: teleportToGround
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8699732867740576249, guid: ec72edb3554724941811d626d1ebced7,
         type: 3}
       propertyPath: m_RootOrder
@@ -902,7 +918,7 @@ PrefabInstance:
     - target: {fileID: 8699732867740576249, guid: ec72edb3554724941811d626d1ebced7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.336
+      value: 3.561
       objectReference: {fileID: 0}
     - target: {fileID: 8699732867740576249, guid: ec72edb3554724941811d626d1ebced7,
         type: 3}
