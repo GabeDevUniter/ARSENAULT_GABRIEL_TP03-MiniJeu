@@ -4072,6 +4072,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 20
+  fieldAngle: 50
+  fieldHeight: 10
+  fieldDistance: 20
   EyePosition: {fileID: 8990797541727739185}
   BulletStart: {fileID: 4315838324374268773}
   currentWeapon: {fileID: 2334193040883330225}
@@ -4080,9 +4083,6 @@ MonoBehaviour:
   dialogs_Idle: {fileID: 9092851374819954599}
   dialogs_Alert: {fileID: 441500870680454937}
   dialogs_Death: {fileID: 7429888239355233658}
-  fieldAngle: 50
-  fieldHeight: 10
-  fieldDistance: 20
 --- !u!114 &9185518640515211316
 MonoBehaviour:
   m_ObjectHideFlags: 0
