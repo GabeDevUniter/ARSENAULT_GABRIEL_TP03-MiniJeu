@@ -340,6 +340,40 @@ public class Player : MonoBehaviour
         if(weapon.currentAmmo <= 0 || weapon.currentAmmo > weapon.Mag) weapon.currentAmmo = weapon.Mag;
 
         weapon.isPlayerEquipped = true;
+
+        SortWeapons();
+    }
+
+    /// <summary>
+    /// Sort the weapons in each slot from their weapon index. If two weapons have
+    /// the same index, one will override the other.
+    /// </summary>
+    private void SortWeapons()
+    {
+        foreach(List<WeaponStats> slot in weapons.Values)
+        {
+            for(int i = 0; i < slot.Count; i++)
+            {
+                // To prevent an out-of-range
+                while(slot[i].weaponIndex >= slot.Count)
+                {
+                    slot.Add(default);
+                }
+
+                if(i != slot[i].weaponIndex)
+                {
+                    WeaponStats temp = slot[slot[i].weaponIndex];
+
+                    slot[slot[i].weaponIndex] = slot[i];
+                    slot[i] = temp;
+                }
+            }
+
+            for(int i = slot.Count - 1; i >= 0; i--)
+            {
+                if (slot[i] == default) slot.RemoveAt(i);
+            }
+        }
     }
 
     /// <summary>
