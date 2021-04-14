@@ -128,6 +128,9 @@ public class Player : MonoBehaviour
         RefreshGUI();
     }
 
+    private KeyCode previousKey; // Will be used for weapon selection
+    private int weaponIndex = 0;
+
     void Update()
     {
         if(currentWeapon == null || currentWeapon.logic.CanSwitch)
@@ -136,7 +139,21 @@ public class Player : MonoBehaviour
             {
                 if (Input.GetKeyDown(key))
                 {
-                    if (weapons[key].Count > 0) EquipWeapon(weapons[key][0]);
+
+                    if(key == previousKey)
+                    {
+                        weaponIndex++;
+
+                        if (weaponIndex >= weapons[key].Count) weaponIndex = 0;
+                    }
+                    else
+                    {
+                        weaponIndex = 0;
+                    }
+
+                    if (weapons[key].Count > 0) EquipWeapon(weapons[key][weaponIndex]);
+
+                    previousKey = key;
                 }
             }
         }
