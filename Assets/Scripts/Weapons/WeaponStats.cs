@@ -33,7 +33,11 @@ public class WeaponStats : MonoBehaviour
     public float Range;
     public float RangeNPC;
 
+    [Header("Slot and Index")]
     public KeyCode WeaponSlot; // Which input should the player press to equip the weapon?
+
+    [SerializeField]
+    private int weaponIndex;
 
     [Header("Ammo")]
     [Min(0)]
