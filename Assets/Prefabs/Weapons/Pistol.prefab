@@ -278,7 +278,6 @@ MonoBehaviour:
   bloodImpact: {fileID: 5104835697655403653, guid: 1aa6e3d5851b6b24eab795e12cd4858e,
     type: 3}
   bulletImpact: {fileID: 100002, guid: ab7c54a285e749148b48f32796ddf885, type: 3}
-  trail: {fileID: 0}
   audio_fire: {fileID: 5630306800318946738}
   audio_reload: {fileID: 224658098177697704}
 --- !u!114 &5141380796798230829
@@ -304,6 +303,7 @@ MonoBehaviour:
   Range: 30
   RangeNPC: 10
   WeaponSlot: 50
+  weaponIndex: 0
   _mag: 8
   currentAmmo: 8
   ammoType: 0
@@ -357,8 +357,8 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7500862337510539733}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -436,8 +436,8 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7500862337510539741}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
