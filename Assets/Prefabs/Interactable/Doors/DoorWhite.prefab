@@ -332,7 +332,7 @@ MonoBehaviour:
   interactCollider: {fileID: 8763634630278998095}
   interactType: 1
   isInteractable: 1
-  distance: 2
+  distance: 5
   delay: 2
 --- !u!1 &8879394401455451684
 GameObject:
