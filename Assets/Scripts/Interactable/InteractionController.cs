@@ -18,7 +18,7 @@ public class InteractionController : MonoBehaviour
     private bool isInteractable = true;
 
     [SerializeField]
-    private float distance = 50f;
+    private float distance = 2f;
 
     [SerializeField]
     private float delay = 2f;
