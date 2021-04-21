@@ -230,6 +230,8 @@ GameObject:
   - component: {fileID: 8877335902528802662}
   - component: {fileID: 8883896352930018296}
   - component: {fileID: 8894204570003528388}
+  - component: {fileID: 5062501407250525628}
+  - component: {fileID: 198640329677908000}
   m_Layer: 0
   m_Name: DoorWhite
   m_TagString: Untagged
@@ -300,6 +302,38 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &5062501407250525628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879375526865824026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c8b04d2d19ea94bb516189373929cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorTransform: {fileID: 8875574211433310366}
+  orientation: 90
+  speed: 25
+--- !u!114 &198640329677908000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879375526865824026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a4e9c58f3abde147a32ba7f16969b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactCollider: {fileID: 8763634630278998095}
+  interactType: 1
+  isInteractable: 1
+  distance: 2
+  delay: 2
 --- !u!1 &8879394401455451684
 GameObject:
   m_ObjectHideFlags: 0
