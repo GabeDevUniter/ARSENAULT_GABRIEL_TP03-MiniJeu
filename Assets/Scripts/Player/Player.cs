@@ -80,47 +80,7 @@ public class Player : MonoBehaviour
         
         Cam = GetComponentInChildren<Camera>();
 
-        foreach(AmmoType ammo in maxAmmo.Keys)
-        {
-            AddAmmo(ammo, 0);
-        }
-
-        // This dictionary is used to first store the starting weapons in a hashset to make sure we don't
-        // get the same weapon twice, then copy the contents in the main dictionary, which contains lists instead.
-        // It's probably not the best way to do it, but it would have been easier if you could access Hashset contents
-        // with indexes. Unfortunately, you can't.
-        var tempWeapons = new Dictionary<KeyCode, HashSet<WeaponStats>>();
-
-        foreach (KeyCode key in weaponInput)
-        {
-            tempWeapons.Add(key, new HashSet<WeaponStats>());
-
-            weapons.Add(key, new List<WeaponStats>());
-        }
-
-        
-
-        foreach (WeaponStats weapon in StartWeapons)
-        {
-            if (weapon == default) continue;
-
-            foreach (KeyCode key in weaponInput)
-            {
-                if (weapon.WeaponSlot == key)
-                {
-                    tempWeapons[weapon.WeaponSlot].Add(weapon);
-                    break;
-                }
-            }
-        }
-
-        foreach (KeyCode key in tempWeapons.Keys)
-        {
-            foreach (WeaponStats weapon in tempWeapons[key])
-            {
-                CreateWeaponInstance(weapon);
-            }
-        }
+        InitializeWeapons();
     }
 
     private void Start()
@@ -268,6 +228,51 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void InitializeWeapons()
+    {
+        foreach (AmmoType ammo in maxAmmo.Keys)
+        {
+            AddAmmo(ammo, 0);
+        }
+
+        // This dictionary is used to first store the starting weapons in a hashset to make sure we don't
+        // get the same weapon twice, then copy the contents in the main dictionary, which contains lists instead.
+        // It's probably not the best way to do it, but it would have been easier if you could access Hashset contents
+        // with indexes. Unfortunately, you can't.
+        var tempWeapons = new Dictionary<KeyCode, HashSet<WeaponStats>>();
+
+        foreach (KeyCode key in weaponInput)
+        {
+            tempWeapons.Add(key, new HashSet<WeaponStats>());
+
+            weapons.Add(key, new List<WeaponStats>());
+        }
+
+
+
+        foreach (WeaponStats weapon in StartWeapons)
+        {
+            if (weapon == default) continue;
+
+            foreach (KeyCode key in weaponInput)
+            {
+                if (weapon.WeaponSlot == key)
+                {
+                    tempWeapons[weapon.WeaponSlot].Add(weapon);
+                    break;
+                }
+            }
+        }
+
+        foreach (KeyCode key in tempWeapons.Keys)
+        {
+            foreach (WeaponStats weapon in tempWeapons[key])
+            {
+                CreateWeaponInstance(weapon);
+            }
+        }
+    }
+
     /// <summary>
     /// Gives a new weapon to the player
     /// </summary>
@@ -320,7 +325,12 @@ public class Player : MonoBehaviour
     {
         GameObject newWeapon = Instantiate(weapon.gameObject, WeaponPlacement.transform);
 
+        newWeapon.transform.position = WeaponPlacement.transform.position;
+        newWeapon.transform.rotation = WeaponPlacement.transform.rotation;
+
         weapon = newWeapon.GetComponent<WeaponStats>();
+
+        weapon.logic.clearPickup();
 
         foreach(KeyCode key in weapons.Keys)
         {
