@@ -273,6 +273,18 @@ public class WeaponLogic : MonoBehaviour
     #endregion
 
     /// <summary>
+    /// Clear any components related to interaction
+    /// </summary>
+    public void clearPickup()
+    {
+        Destroy(GetComponent<Rigidbody>());
+
+        Destroy(GetComponent<BoxCollider>());
+
+        Destroy(GetComponent<InteractionController>());
+    }
+
+    /// <summary>
     /// Emits the impact particle, whether it be a bullet impact or blood impact
     /// </summary>
     /// <param name="particle">Particle to emit</param>
