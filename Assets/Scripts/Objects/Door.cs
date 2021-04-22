@@ -21,14 +21,14 @@ public class Door : MonoBehaviour
     public void Open()
     {
         if (!isMoving && !currentState)
-            StartCoroutine(DoorMove2(doorTransform.rotation, new Quaternion(doorTransform.rotation.x, doorTransform.rotation.y - orientation * Mathf.Deg2Rad, 0f, 0f)));
+            StartCoroutine(DoorMove2(doorTransform.rotation.eulerAngles, GetOrientation(-1)));
         //StartCoroutine(DoorMove(doorTransform.rotation.eulerAngles.y, doorTransform.rotation.eulerAngles.y - orientation));
     }
 
     public void Close()
     {
         if (!isMoving && currentState)
-            StartCoroutine(DoorMove2(doorTransform.rotation, new Quaternion(doorTransform.rotation.x, doorTransform.rotation.y + orientation * Mathf.Deg2Rad, 0f, 0f)));
+            StartCoroutine(DoorMove2(doorTransform.rotation.eulerAngles, GetOrientation(1)));
         //StartCoroutine(DoorMove(doorTransform.rotation.eulerAngles.y, doorTransform.rotation.eulerAngles.y + orientation));
     }
 
@@ -39,6 +39,15 @@ public class Door : MonoBehaviour
             if (currentState) Close();
             else Open();
         }
+    }
+
+    private Vector3 GetOrientation(int direction)
+    {
+        Vector3 currentAngles = doorTransform.rotation.eulerAngles;
+
+        currentAngles.y += orientation * direction;
+
+        return currentAngles;
     }
 
     IEnumerator DoorMove(float start, float end)
@@ -81,25 +90,28 @@ public class Door : MonoBehaviour
         isMoving = false;
     }
 
-    IEnumerator DoorMove2(Quaternion start, Quaternion end)
+    IEnumerator DoorMove2(Vector3 start, Vector3 end)
     {
         isMoving = true;
 
-        Debug.Log(start);
-        Debug.Log(end);
-
         float duration = (end.y - start.y) / speed;
+
+        float direction = duration / Mathf.Abs(duration);
+
+        duration = Mathf.Abs(duration);
 
         float elapsed = 0f;
 
         while(elapsed <= duration)
         {
-            doorTransform.rotation = Quaternion.Lerp(start, end, elapsed / duration);
+            doorTransform.Rotate(new Vector3(0f, direction * speed * Time.deltaTime, 0f));
+
+            elapsed += Time.deltaTime;
 
             yield return null;
         }
 
-        doorTransform.rotation = end;
+        doorTransform.Rotate(new Vector3(0f, end.y - doorTransform.rotation.eulerAngles.y, 0f));
 
         currentState = !currentState;
 
