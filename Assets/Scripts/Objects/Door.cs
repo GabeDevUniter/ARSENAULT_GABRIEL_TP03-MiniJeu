@@ -18,10 +18,17 @@ public class Door : MonoBehaviour
 
     private bool currentState = false; // false = Closed ; true = Open
 
+    private Vector3 originAngles;
+
+    private void Awake()
+    {
+        originAngles = doorTransform.rotation.eulerAngles;
+    }
+
     public void Open()
     {
         if (!isMoving && !currentState)
-            StartCoroutine(DoorMove(doorTransform.rotation.eulerAngles, GetOrientation(-1)));
+            StartCoroutine(DoorMove(doorTransform.rotation.eulerAngles, GetOrientation(1)));
     }
 
     public void Close()
@@ -43,7 +50,7 @@ public class Door : MonoBehaviour
     {
         Vector3 currentAngles = doorTransform.rotation.eulerAngles;
 
-        currentAngles.y += orientation * direction;
+        currentAngles.y -= currentState ? currentAngles.y - originAngles.y : orientation * direction;
 
         return currentAngles;
     }
