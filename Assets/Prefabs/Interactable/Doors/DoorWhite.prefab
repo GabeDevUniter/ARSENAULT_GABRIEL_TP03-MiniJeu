@@ -316,7 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorTransform: {fileID: 8875574211433310366}
   orientation: 90
-  speed: 25
+  speed: 150
 --- !u!114 &198640329677908000
 MonoBehaviour:
   m_ObjectHideFlags: 0
