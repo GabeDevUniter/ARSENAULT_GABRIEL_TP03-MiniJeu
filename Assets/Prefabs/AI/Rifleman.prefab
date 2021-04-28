@@ -4398,6 +4398,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9132226446923052583}
     m_Modifications:
+    - target: {fileID: 1575920859, guid: 6d87c609c32ac4b7fa099c4bd236bd9f, type: 3}
+      propertyPath: isInteractable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 267228664455353841, guid: 6d87c609c32ac4b7fa099c4bd236bd9f,
         type: 3}
       propertyPath: m_Layer
