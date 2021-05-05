@@ -51,9 +51,9 @@ public class Grunt : Statemachine
 
     // Ragdoll
 
-    private Rigidbody[] ragdoll;
+    private RagdollController RagdollController;
 
-    public Rigidbody[] Ragdoll { get { return ragdoll; } }
+    public Rigidbody[] Ragdoll { get { return RagdollController.Ragdoll; } }
 
     //
 
@@ -100,9 +100,9 @@ public class Grunt : Statemachine
 
         audioRange = GetComponent<AudioRange>();
 
-        ragdoll = GetComponentsInChildren<Rigidbody>();
+        RagdollController = GetComponentInChildren<RagdollController>();
 
-        SetRagdoll(false);
+        RagdollController.SetRagdoll(false);
 
         currentWeapon.RateOfFire = currentWeapon.RateOfFireNPC;
         currentWeapon.Spread = currentWeapon.SpreadNPC;
@@ -125,18 +125,6 @@ public class Grunt : Statemachine
     void Update()
     {
         StateTick();
-    }
-
-    #endregion
-
-    #region Ragdolls
-
-    public void SetRagdoll(bool mode)
-    {
-        foreach(Rigidbody bone in ragdoll)
-        {
-            bone.isKinematic = !mode;
-        }
     }
 
     #endregion
@@ -266,10 +254,8 @@ public class Grunt : Statemachine
         Destroy(currentWeapon.gameObject);
         //
 
-        //if(WeaponDrop != null) Instantiate(WeaponDrop, EyeTransform);
-        //WeaponDrop = null;
-
-        SetRagdoll(true);
+        RagdollController.SetRagdoll(true);
+        RagdollController.startCooldown();
 
         dialogs_Idle.MuteAll();
         dialogs_Alert.MuteAll();
