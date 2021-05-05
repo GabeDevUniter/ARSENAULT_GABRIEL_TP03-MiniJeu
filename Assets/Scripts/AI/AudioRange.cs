@@ -29,21 +29,42 @@ public class AudioRange : MonoBehaviour
         foreach(Collider collider in colliders)
         {
             Grunt collided = collider.GetComponentInParent<Grunt>();
-
+            
             if(collided != null && collided != grunt)
             {
-                if(Physics.Linecast(transform.position, collided.transform.position, out RaycastHit hit))
+                detected.Add(collided.EyeTransform.position);
+                if(Physics.Linecast(grunt.EyeTransform.position, collided.EyeTransform.position, out RaycastHit hit, LayerMask.NameToLayer("NPC")))
                 {
                     Debug.Log(hit.collider);
+                }
+                else
+                {
+                    collided._SetState(typeof(AlertState));
                 }
             }
         }
     }
 
-    
+    List<Vector3> detected = new List<Vector3>();
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, radius);
+
+        #if false
+        foreach(Vector3 detect in detected)
+        {
+            if (Physics.Linecast(grunt.EyeTransform.position, detect, LayerMask.NameToLayer("NPC")))
+            {
+                Gizmos.color = Color.red;
+            }
+            else
+            {
+                Gizmos.color = Color.green;
+            }
+
+            Gizmos.DrawLine(grunt.EyeTransform.position, detect);
+        }
+        #endif
     }
 }
