@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 7601090547001650559}
   - component: {fileID: 6832985387100791514}
   - component: {fileID: 8734541571741128208}
-  - component: {fileID: 1985107751006594868}
+  - component: {fileID: 1646768067640284883}
   m_Layer: 0
   m_Name: Cabinet3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7601090547001650559
 Transform:
@@ -80,8 +80,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1985107751006594868
-MeshCollider:
+--- !u!65 &1646768067640284883
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,7 +90,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7319552838958926937, guid: 008bbf9059279de4d9dd225076b5ef12, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.6000171, y: 0.8235256, z: 0.67332006}
+  m_Center: {x: -0.000008508563, y: 0.4117628, z: 0.036660016}
