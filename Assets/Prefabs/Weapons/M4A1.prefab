@@ -313,6 +313,7 @@ MonoBehaviour:
   currentAmmo: 30
   ammoType: 2
   logic: {fileID: 0}
+  interact: {fileID: 0}
   isPlayerEquipped: 0
 --- !u!54 &2434602692090909057
 Rigidbody:
@@ -781,6 +782,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 9bae90d85f7ffe44886ec3f6c0b3f268, type: 3}
+      propertyPath: LightsModule.light
+      value: 
+      objectReference: {fileID: 267228664445049043}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bae90d85f7ffe44886ec3f6c0b3f268, type: 3}
 --- !u!4 &267228664455645653 stripped
@@ -792,6 +797,12 @@ Transform:
 --- !u!198 &267228664469802133 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19800006, guid: 9bae90d85f7ffe44886ec3f6c0b3f268,
+    type: 3}
+  m_PrefabInstance: {fileID: 267228664455254867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &267228664445049043 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 10800000, guid: 9bae90d85f7ffe44886ec3f6c0b3f268,
     type: 3}
   m_PrefabInstance: {fileID: 267228664455254867}
   m_PrefabAsset: {fileID: 0}
