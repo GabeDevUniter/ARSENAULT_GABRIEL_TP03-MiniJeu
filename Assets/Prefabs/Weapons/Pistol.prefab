@@ -311,6 +311,7 @@ MonoBehaviour:
   currentAmmo: 8
   ammoType: 0
   logic: {fileID: 0}
+  interact: {fileID: 0}
   isPlayerEquipped: 0
 --- !u!54 &-9096206126079575233
 Rigidbody:
