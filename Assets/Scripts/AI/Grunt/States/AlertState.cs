@@ -13,6 +13,8 @@ public class AlertState : BaseState
 
     public override void Start()
     {
+        grunt.AudioRange.Trigger();
+
         movement.SetMode(NPCMovement.MoveMode.Alert);
 
         movement.SetMovement(NPCMovement.MovementTypes.Run);
