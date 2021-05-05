@@ -2,38 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AudioType { NPC, Weapon }
+
 public class AudioRange : MonoBehaviour
 {
     [SerializeField]
-    private float radius = 5f;
+    private float range = 5f;
 
+    [SerializeField]
+    private AudioType audioType;
 
     private Grunt grunt;
 
     private Collider[] colliders;
 
+    private Vector3 startPosition;
+
     void Awake()
     {
-        grunt = GetComponent<Grunt>();
-    }
+        switch(audioType)
+        {
+            case AudioType.NPC: grunt = GetComponent<Grunt>(); startPosition = grunt.EyeTransform.position; break;
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Q)) Trigger();
+            default: startPosition = transform.position; break;
+        }
     }
 
     public void Trigger()
     {
-        colliders = Physics.OverlapSphere(transform.position, radius);
+        colliders = Physics.OverlapSphere(transform.position, range);
 
         foreach(Collider collider in colliders)
         {
             Grunt collided = collider.GetComponentInParent<Grunt>();
             
-            if(collided != null && collided != grunt)
+            if(collided != null)
             {
-                detected.Add(collided.EyeTransform.position);
-                if(!Physics.Linecast(grunt.EyeTransform.position, collided.EyeTransform.position, LayerMask.NameToLayer("NPC")))
+                foundGrunts.Add(collided.EyeTransform.position);
+
+                if (collided != grunt && !Physics.Linecast(startPosition, collided.EyeTransform.position, gameObject.layer))
                 {
                     collided._SetState(typeof(AlertState));
                 }
@@ -41,16 +48,16 @@ public class AudioRange : MonoBehaviour
         }
     }
 
-    List<Vector3> detected = new List<Vector3>();
+    List<Vector3> foundGrunts = new List<Vector3>();
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, range);
 
         #if false
-        foreach(Vector3 detect in detected)
+        foreach(Vector3 detect in foundGrunts)
         {
-            if (Physics.Linecast(grunt.EyeTransform.position, detect, LayerMask.NameToLayer("NPC")))
+            if (Physics.Linecast(startPosition, detect, gameObject.layer))
             {
                 Gizmos.color = Color.red;
             }
@@ -59,7 +66,7 @@ public class AudioRange : MonoBehaviour
                 Gizmos.color = Color.green;
             }
 
-            Gizmos.DrawLine(grunt.EyeTransform.position, detect);
+            Gizmos.DrawLine(startPosition, detect);
         }
         #endif
     }
