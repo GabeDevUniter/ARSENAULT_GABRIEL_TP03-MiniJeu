@@ -11,11 +11,12 @@ public class InteractionController : MonoBehaviour
     [SerializeField]
     private Collider interactCollider;
 
+    public bool ColliderEnabled { get { return interactCollider.enabled; } set { interactCollider.enabled = value; } }
+
     [SerializeField]
     private InteractTypes interactType;
 
-    [SerializeField]
-    private bool isInteractable = true;
+    public bool isInteractable = true;
 
     [SerializeField]
     private float distance = 2f;
