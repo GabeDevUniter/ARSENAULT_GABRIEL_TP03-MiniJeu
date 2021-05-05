@@ -1471,6 +1471,7 @@ GameObject:
   - component: {fileID: 4137771582749539354}
   - component: {fileID: 4137771582749539352}
   - component: {fileID: 4137771582749539353}
+  - component: {fileID: 4022894734472847552}
   m_Layer: 11
   m_Name: Pistolman
   m_TagString: NPC
@@ -1574,7 +1575,7 @@ MonoBehaviour:
   fieldAngle: 50
   fieldHeight: 10
   fieldDistance: 20
-  EyePosition: {fileID: 4238009738081435932}
+  EyeTransform: {fileID: 4238009738081435932}
   BulletStart: {fileID: 9075076279052990280}
   currentWeapon: {fileID: 93466484537845287}
   WeaponDrop: {fileID: 8699732867740576254, guid: 18eddce100095496bbd4d806a5c3f427,
@@ -1599,6 +1600,19 @@ MonoBehaviour:
   turnDuration: 0.3
   turnPointDuration: 3
   startingPoint: {fileID: 0}
+--- !u!114 &4022894734472847552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137771582749539358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48fe2363988c0441ba6a0a9a710c3db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
 --- !u!1 &4203884963621067720
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,7 +2780,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6258166813242149324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1061, y: 0.0646, z: -0}
+  m_LocalPosition: {x: 0, y: 0.0974, z: 0.187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5050177704742977766}
@@ -4199,6 +4213,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5050177704742977766}
     m_Modifications:
+    - target: {fileID: 428745627102328160, guid: bc08f304d10bf424eb3e7bb8f22ff0e5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5400599333094588454, guid: bc08f304d10bf424eb3e7bb8f22ff0e5,
         type: 3}
       propertyPath: m_Layer
@@ -4239,6 +4258,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 7085389662020158995, guid: bc08f304d10bf424eb3e7bb8f22ff0e5,
+        type: 3}
+      propertyPath: isInteractable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7500862337510514163, guid: bc08f304d10bf424eb3e7bb8f22ff0e5,
         type: 3}
       propertyPath: m_RootOrder
@@ -4247,32 +4271,32 @@ PrefabInstance:
     - target: {fileID: 7500862337510514163, guid: bc08f304d10bf424eb3e7bb8f22ff0e5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7500862337510514163, guid: bc08f304d10bf424eb3e7bb8f22ff0e5,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.11
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7500862337510514163, guid: bc08f304d10bf424eb3e7bb8f22ff0e5,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.11
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7500862337510514163, guid: bc08f304d10bf424eb3e7bb8f22ff0e5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7500862337510514163, guid: bc08f304d10bf424eb3e7bb8f22ff0e5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7500862337510514163, guid: bc08f304d10bf424eb3e7bb8f22ff0e5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.0392
       objectReference: {fileID: 0}
     - target: {fileID: 7500862337510514163, guid: bc08f304d10bf424eb3e7bb8f22ff0e5,
         type: 3}

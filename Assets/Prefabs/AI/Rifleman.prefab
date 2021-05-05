@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210531870235776481}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.004, y: 0.107, z: -0.78}
+  m_LocalPosition: {x: 0.004, y: 0.107, z: 0.768}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 9132226446923052583}
@@ -3971,6 +3971,7 @@ GameObject:
   - component: {fileID: 9185518640515211319}
   - component: {fileID: 9185518640515211317}
   - component: {fileID: 9185518640515211316}
+  - component: {fileID: 4497786566178050738}
   m_Layer: 11
   m_Name: Rifleman
   m_TagString: NPC
@@ -4075,7 +4076,7 @@ MonoBehaviour:
   fieldAngle: 50
   fieldHeight: 10
   fieldDistance: 20
-  EyePosition: {fileID: 8990797541727739185}
+  EyeTransform: {fileID: 8990797541727739185}
   BulletStart: {fileID: 4315838324374268773}
   currentWeapon: {fileID: 2334193040883330225}
   WeaponDrop: {fileID: 8699732867740576254, guid: ec72edb3554724941811d626d1ebced7,
@@ -4100,6 +4101,19 @@ MonoBehaviour:
   turnDuration: 0.3
   turnPointDuration: 3
   startingPoint: {fileID: 0}
+--- !u!114 &4497786566178050738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185518640515211315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48fe2363988c0441ba6a0a9a710c3db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
 --- !u!1001 &2988651869954944192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4402,6 +4416,10 @@ PrefabInstance:
       propertyPath: isInteractable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1575920860, guid: 6d87c609c32ac4b7fa099c4bd236bd9f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 267228664455353841, guid: 6d87c609c32ac4b7fa099c4bd236bd9f,
         type: 3}
       propertyPath: m_Layer
@@ -4528,8 +4546,7 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 2434602692090909057, guid: 6d87c609c32ac4b7fa099c4bd236bd9f, type: 3}
-    - {fileID: 809412741562117672, guid: 6d87c609c32ac4b7fa099c4bd236bd9f, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 6d87c609c32ac4b7fa099c4bd236bd9f, type: 3}
 --- !u!4 &3979662421846842527 stripped
 Transform:
