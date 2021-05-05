@@ -56,6 +56,8 @@ public class WeaponStats : MonoBehaviour
     [HideInInspector]
     public WeaponLogic logic;
 
+    [HideInInspector]
+    public InteractionController interact;
 
     [HideInInspector]
     public bool isPlayerEquipped = false;
@@ -65,5 +67,7 @@ public class WeaponStats : MonoBehaviour
         currentAmmo = _mag;
 
         logic = GetComponent<WeaponLogic>();
+
+        interact = GetComponent<InteractionController>();
     }
 }
