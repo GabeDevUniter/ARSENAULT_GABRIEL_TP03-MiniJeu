@@ -29,6 +29,10 @@ public class WeaponLogic : MonoBehaviour
     [SerializeField]
     private AudioSource audio_reload;
 
+    // Audio Range
+    private AudioRange AudioRange;
+    //
+
     // Misc
     private WeaponStats stats;
 
@@ -55,6 +59,8 @@ public class WeaponLogic : MonoBehaviour
     void Awake()
     {
         stats = GetComponent<WeaponStats>();
+
+        AudioRange = GetComponent<AudioRange>();
     }
 
     private void Start()
@@ -85,6 +91,8 @@ public class WeaponLogic : MonoBehaviour
     public void ShootDown()
     {
         if (isShooting || isReloading || stats.currentAmmo <= 0) return;
+
+        AudioRange.Trigger();
 
         muzzleFlash.Play();
     }
