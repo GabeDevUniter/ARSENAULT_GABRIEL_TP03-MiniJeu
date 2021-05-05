@@ -47,6 +47,18 @@ public class DialogDirector : MonoBehaviour
 
             dialog.maxDistance = maxDistance;
         }
+
+        // Removing the disabled audio sources
+        List<AudioSource> tmpDialogs = new List<AudioSource>();
+        
+        for(int i = 0; i < dialogs.Length; i++)
+        {
+            if (dialogs[i].enabled) tmpDialogs.Add(dialogs[i]);
+        }
+
+        dialogs = tmpDialogs.ToArray();
+        //
+
         if (startDelay || !isWaiting) StartCoroutine(Delay(Random.Range(cooldownMin, cooldownMax)));
     }
 
