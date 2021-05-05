@@ -33,11 +33,7 @@ public class AudioRange : MonoBehaviour
             if(collided != null && collided != grunt)
             {
                 detected.Add(collided.EyeTransform.position);
-                if(Physics.Linecast(grunt.EyeTransform.position, collided.EyeTransform.position, out RaycastHit hit, LayerMask.NameToLayer("NPC")))
-                {
-                    Debug.Log(hit.collider);
-                }
-                else
+                if(!Physics.Linecast(grunt.EyeTransform.position, collided.EyeTransform.position, LayerMask.NameToLayer("NPC")))
                 {
                     collided._SetState(typeof(AlertState));
                 }
