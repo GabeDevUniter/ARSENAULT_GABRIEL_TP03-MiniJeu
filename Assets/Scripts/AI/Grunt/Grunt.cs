@@ -24,7 +24,7 @@ public class Grunt : Statemachine
     public float fieldDistance = 20f;
 
     [Header("Transforms")]
-    public Transform EyePosition;
+    public Transform EyeTransform;
     public Transform BulletStart;
 
     [Header("Weapons")]
@@ -78,7 +78,13 @@ public class Grunt : Statemachine
 
     //
 
-    
+    // Audio Range
+
+    private AudioRange audioRange;
+
+    public AudioRange AudioRange { get { return audioRange; } }
+
+    //
 
     #endregion
 
@@ -91,6 +97,8 @@ public class Grunt : Statemachine
         agent = GetComponent<NavMeshAgent>();
         movement = GetComponent<NPCMovement>();
         animator = GetComponent<Animator>();
+
+        audioRange = GetComponent<AudioRange>();
 
         ragdoll = GetComponentsInChildren<Rigidbody>();
 
@@ -146,12 +154,12 @@ public class Grunt : Statemachine
     /// </summary>
     public bool PlayerDetect()
     {
-        if (Physics.Linecast(EyePosition.position, PlayerHead, out playerHit))
+        if (Physics.Linecast(EyeTransform.position, PlayerHead, out playerHit))
         {
             if (playerHit.collider.CompareTag("Player"))
             {
                 Vector3 pointA = transform.forward;
-                Vector3 pointB = PlayerHead - EyePosition.position;
+                Vector3 pointB = PlayerHead - EyeTransform.position;
 
                 float height = Mathf.Abs(pointB.y - pointA.y);
 
@@ -173,7 +181,7 @@ public class Grunt : Statemachine
     {
         bool inSight = false;
 
-        if (Physics.Linecast(EyePosition.position, PlayerHead, out playerHit))
+        if (Physics.Linecast(EyeTransform.position, PlayerHead, out playerHit))
         {
             inSight = playerHit.collider.CompareTag("Player");
         }
@@ -244,10 +252,22 @@ public class Grunt : Statemachine
 
         Destroy(agent);
 
-        Destroy(currentWeapon.gameObject);
+        Destroy(audioRange);
 
-        if(WeaponDrop != null) Instantiate(WeaponDrop, EyePosition);
-        WeaponDrop = null;
+        // Weapon pickup
+        currentWeapon.interact.isInteractable = true;
+
+        currentWeapon.interact.ColliderEnabled = true;
+
+        currentWeapon.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+
+        Instantiate(currentWeapon.gameObject, currentWeapon.transform.position, currentWeapon.transform.rotation);
+        
+        Destroy(currentWeapon.gameObject);
+        //
+
+        //if(WeaponDrop != null) Instantiate(WeaponDrop, EyeTransform);
+        //WeaponDrop = null;
 
         SetRagdoll(true);
 
