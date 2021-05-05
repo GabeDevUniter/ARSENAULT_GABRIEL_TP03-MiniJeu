@@ -47,6 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68fa09e93c0c9d4d89cb3c5b3a1b653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volume: 0.6
+  spatialBlend: 0.7
+  maxDistance: 12
   cooldownMin: 6
   cooldownMax: 20
   startDelay: 1
@@ -57,7 +60,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6289733368987280248}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8933141312304196805, guid: ea558454e52e81747ae57e065b509b00,
     type: 2}
@@ -154,7 +157,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6289733368987280248}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8933141312304196805, guid: ea558454e52e81747ae57e065b509b00,
     type: 2}
@@ -348,7 +351,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6289733368987280248}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8933141312304196805, guid: ea558454e52e81747ae57e065b509b00,
     type: 2}
