@@ -16,7 +16,12 @@ public class Statemachine : MonoBehaviour
 
     protected void SetState(System.Type state)
     {
-        if(CurrentState != null) CurrentState.Stop();
+        if (CurrentState != null)
+        {
+            if (state == CurrentState.GetType()) return;
+
+            CurrentState.Stop();
+        }
 
         CurrentState = states[state];
 
