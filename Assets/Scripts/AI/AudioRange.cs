@@ -20,7 +20,7 @@ public class AudioRange : MonoBehaviour
 
     void Awake()
     {
-        switch(audioType)
+        switch (audioType)
         {
             case AudioType.NPC: grunt = GetComponent<Grunt>(); startPosition = grunt.EyeTransform.position; break;
 
@@ -32,11 +32,11 @@ public class AudioRange : MonoBehaviour
     {
         colliders = Physics.OverlapSphere(transform.position, range);
 
-        foreach(Collider collider in colliders)
+        foreach (Collider collider in colliders)
         {
             Grunt collided = collider.GetComponentInParent<Grunt>();
-            
-            if(collided != null)
+
+            if (collided != null)
             {
                 foundGrunts.Add(collided.EyeTransform.position);
 
@@ -51,10 +51,12 @@ public class AudioRange : MonoBehaviour
     List<Vector3> foundGrunts = new List<Vector3>();
     private void OnDrawGizmos()
     {
+#if false
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, range);
+#endif
 
-        #if false
+#if false
         foreach(Vector3 detect in foundGrunts)
         {
             if (Physics.Linecast(startPosition, detect, gameObject.layer))
@@ -68,6 +70,6 @@ public class AudioRange : MonoBehaviour
 
             Gizmos.DrawLine(startPosition, detect);
         }
-        #endif
+#endif
     }
 }
