@@ -102,8 +102,6 @@ public class Grunt : Statemachine
 
         RagdollController = GetComponentInChildren<RagdollController>();
 
-        RagdollController.SetRagdoll(false);
-
         currentWeapon.RateOfFire = currentWeapon.RateOfFireNPC;
         currentWeapon.Spread = currentWeapon.SpreadNPC;
 
@@ -119,6 +117,8 @@ public class Grunt : Statemachine
 
     void Start()
     {
+        RagdollController.SetRagdoll(false);
+
         SetState(typeof(IdleState));
     }
 
