@@ -6,3 +6,8 @@ Library/
 Temp/
 ARSENAULT_GABRIEL_TP03-MiniJeu.sln
 Assembly-CSharp.csproj
+Assets/Scenes/Probuilder testing.meta
+Assets/Scenes/Probuilder testing.unity
+Assets/Scenes/Probuilder testing.unity.meta
+Assets/Scenes/Probuilder testing/NavMesh.asset
+Assets/Scenes/Probuilder testing/NavMesh.asset.meta
