@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 3909561704111121927}
   - component: {fileID: 823767838473965951}
   - component: {fileID: 5759739001429841123}
+  - component: {fileID: 5402988927997696607}
   m_Layer: 0
   m_Name: DoorDark
   m_TagString: Untagged
@@ -363,6 +364,7 @@ MonoBehaviour:
   doorTransform: {fileID: 3892057794151273565}
   orientation: -90
   speed: 150
+  lockOnOpen: 1
 --- !u!114 &5759739001429841123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +382,16 @@ MonoBehaviour:
   isInteractable: 1
   distance: 5
   delay: 2
+--- !u!41 &5402988927997696607
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3897551798874314201}
+  m_Open: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.07, y: 2.14, z: 0.26}
 --- !u!1 &3897566825141818087
 GameObject:
   m_ObjectHideFlags: 0
