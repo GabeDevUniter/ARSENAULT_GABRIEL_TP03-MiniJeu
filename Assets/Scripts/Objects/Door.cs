@@ -14,15 +14,22 @@ public class Door : MonoBehaviour
     [SerializeField]
     private float speed = 25f;
 
+    [SerializeField]
+    private bool lockOnOpen = true;
+
     private bool isMoving = false;
 
     private bool currentState = false; // false = Closed ; true = Open
 
     private Vector3 originAngles;
 
+    private OcclusionPortal portal;
+
     private void Awake()
     {
         originAngles = doorTransform.rotation.eulerAngles;
+
+        portal = GetComponent<OcclusionPortal>();
     }
 
     public void Open()
@@ -33,12 +40,16 @@ public class Door : MonoBehaviour
 
     public void Close()
     {
+        if (lockOnOpen && currentState) return;
+
         if (!isMoving && currentState)
             StartCoroutine(DoorMove(doorTransform.rotation.eulerAngles, GetOrientation(1)));
     }
 
     public void Toggle()
     {
+        if (lockOnOpen && currentState) return;
+
         if(!isMoving)
         {
             if (currentState) Close();
@@ -58,6 +69,8 @@ public class Door : MonoBehaviour
     IEnumerator DoorMove(Vector3 start, Vector3 end)
     {
         isMoving = true;
+
+        if (portal != null) portal.open = !currentState;
 
         float duration = (end.y - start.y) / speed;
 
