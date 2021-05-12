@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 3414129316096004974}
   - component: {fileID: 5064447860478145687}
   - component: {fileID: 1223435639149362196}
+  - component: {fileID: 2729370931373411583}
   m_Layer: 0
   m_Name: Python
   m_TagString: Untagged
@@ -429,7 +430,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Python
-  Damage: 7
+  firstPersonSize: {x: 2, y: 2, z: 2}
+  Damage: 9
   DamageNPC: 5
   ReloadTime: 3
   RateOfFire: 0.6
@@ -444,6 +446,7 @@ MonoBehaviour:
   currentAmmo: 8
   ammoType: 0
   logic: {fileID: 0}
+  interact: {fileID: 0}
   isPlayerEquipped: 0
 --- !u!54 &3414129316096004974
 Rigidbody:
@@ -491,6 +494,20 @@ MonoBehaviour:
   isInteractable: 1
   distance: 10
   delay: 2
+--- !u!114 &2729370931373411583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286513142075467177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48fe2363988c0441ba6a0a9a710c3db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 6
+  audioType: 1
 --- !u!1 &7286513142075467179
 GameObject:
   m_ObjectHideFlags: 0
