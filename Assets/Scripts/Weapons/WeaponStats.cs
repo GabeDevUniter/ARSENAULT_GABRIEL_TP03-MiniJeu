@@ -12,6 +12,9 @@ public class WeaponStats : MonoBehaviour
     [SerializeField]
     private string _name;
 
+    [Header("Object")]
+    public Vector3 firstPersonSize;
+
     public string Name { get { return _name; } }
 
     [Header("Damage")]
