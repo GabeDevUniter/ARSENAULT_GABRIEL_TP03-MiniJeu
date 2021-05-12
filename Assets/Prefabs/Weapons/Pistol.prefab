@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Colt 1911
+  firstPersonSize: {x: 0.3, y: 0.3, z: 0.3}
   Damage: 5
   DamageNPC: 4
   ReloadTime: 2

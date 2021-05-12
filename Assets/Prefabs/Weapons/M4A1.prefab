@@ -299,6 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: M4A1
+  firstPersonSize: {x: 1, y: 1, z: 1}
   Damage: 4
   DamageNPC: 3
   ReloadTime: 2
