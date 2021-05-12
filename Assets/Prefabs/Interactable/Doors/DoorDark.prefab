@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactCollider: {fileID: 3797006221939283084}
-  interactType: 1
+  interactType: 2
   isInteractable: 1
   distance: 5
   delay: 2
