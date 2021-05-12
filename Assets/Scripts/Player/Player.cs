@@ -328,6 +328,8 @@ public class Player : MonoBehaviour
         newWeapon.transform.position = WeaponPlacement.transform.position;
         newWeapon.transform.rotation = WeaponPlacement.transform.rotation;
 
+        newWeapon.transform.localScale = weapon.firstPersonSize;
+
         weapon = newWeapon.GetComponent<WeaponStats>();
 
         weapon.logic.clearPickup();
