@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum InteractTypes { Weapon, Door }
+public enum InteractTypes { Weapon, Medkit, Door }
 
 public class InteractionController : MonoBehaviour
 {
@@ -28,11 +28,15 @@ public class InteractionController : MonoBehaviour
 
     private Camera mainCam;
 
+    private Trigger[] triggers;
+
     void Awake()
     {
         interactGameObject = interactCollider.gameObject;
 
         mainCam = Camera.main;
+
+        triggers = GetComponents<Trigger>();
     }
 
 
@@ -64,7 +68,17 @@ public class InteractionController : MonoBehaviour
                             Destroy(gameObject);
 
                             return;
+
+                        case InteractTypes.Medkit:
+
+                            GetComponent<Medkit>().Heal();
+
+                            Destroy(gameObject);
+
+                            return;
                     }
+
+                    foreach (Trigger trigger in triggers) trigger.setTrigger();
 
                     StartCoroutine(Cooldown());
                 }
