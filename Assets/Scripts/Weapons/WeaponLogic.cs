@@ -206,8 +206,13 @@ public class WeaponLogic : MonoBehaviour
         direction.x += spread;
         direction.z += spread;
 
+        int layermask = 1 << LayerMask.NameToLayer("Player") |
+            1 << LayerMask.NameToLayer("Item") |
+            1 << LayerMask.NameToLayer("Default") |
+            1 << LayerMask.NameToLayer("NPC") |
+            1 << LayerMask.NameToLayer("Hitboxes");
 
-        if (Physics.Raycast(start, direction, out RaycastHit hit, 50f))
+        if (Physics.Raycast(start, direction, out RaycastHit hit, 50f, layermask))
         {
             _start = start;
             _dir = direction;
@@ -217,7 +222,7 @@ public class WeaponLogic : MonoBehaviour
             
             hitCollider = hit.collider;
             
-            if(hitCollider != null)
+            if(hitCollider != null && hitCollider.isTrigger == false)
             {
                 ////////////////////////////////////////////////////////////////////////////
 
