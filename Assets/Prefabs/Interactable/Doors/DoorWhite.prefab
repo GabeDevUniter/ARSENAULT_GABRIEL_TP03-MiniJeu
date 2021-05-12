@@ -317,6 +317,7 @@ MonoBehaviour:
   doorTransform: {fileID: 8875574211433310366}
   orientation: -90
   speed: 150
+  lockOnOpen: 1
 --- !u!114 &198640329677908000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactCollider: {fileID: 8763634630278998095}
-  interactType: 1
+  interactType: 2
   isInteractable: 1
   distance: 5
   delay: 2
