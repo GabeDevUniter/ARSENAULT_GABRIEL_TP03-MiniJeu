@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : Triggerable
 {
     [Header("Settings")]
     [SerializeField]
@@ -15,7 +15,9 @@ public class Door : MonoBehaviour
     private float speed = 25f;
 
     [SerializeField]
-    private bool lockOnOpen = true;
+    private bool lockOnMove = true; // Will lock when the door either opens or closes
+
+    public bool locked = false;
 
     private bool isMoving = false;
 
@@ -34,13 +36,15 @@ public class Door : MonoBehaviour
 
     public void Open()
     {
+        if (locked) return;
+
         if (!isMoving && !currentState)
             StartCoroutine(DoorMove(doorTransform.rotation.eulerAngles, GetOrientation(1)));
     }
 
     public void Close()
     {
-        if (lockOnOpen && currentState) return;
+        if (locked) return;
 
         if (!isMoving && currentState)
             StartCoroutine(DoorMove(doorTransform.rotation.eulerAngles, GetOrientation(1)));
@@ -48,7 +52,7 @@ public class Door : MonoBehaviour
 
     public void Toggle()
     {
-        if (lockOnOpen && currentState) return;
+        if (locked) return;
 
         if(!isMoving)
         {
@@ -70,7 +74,7 @@ public class Door : MonoBehaviour
     {
         isMoving = true;
 
-        if (portal != null) portal.open = !currentState;
+        if (portal != null && !currentState) portal.open = !currentState; // Open portal if initially closed
 
         float duration = (end.y - start.y) / speed;
 
@@ -91,7 +95,11 @@ public class Door : MonoBehaviour
 
         doorTransform.Rotate(new Vector3(0f, end.y - doorTransform.rotation.eulerAngles.y, 0f));
 
+        if (portal != null && currentState) portal.open = !currentState; // Close portal if finally closed
+
         currentState = !currentState;
+
+        locked = lockOnMove;
 
         isMoving = false;
     }
