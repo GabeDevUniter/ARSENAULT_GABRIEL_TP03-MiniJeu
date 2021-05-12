@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 8881102535892748636}
   - component: {fileID: 4687764788697963628}
   - component: {fileID: 17575710920640856}
+  - component: {fileID: 42690311884166752}
   m_Layer: 0
   m_Name: AK47
   m_TagString: Untagged
@@ -376,6 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: AK47
+  firstPersonSize: {x: 1, y: 1, z: 1}
   Damage: 4
   DamageNPC: 3
   ReloadTime: 2
@@ -391,6 +393,7 @@ MonoBehaviour:
   currentAmmo: 30
   ammoType: 2
   logic: {fileID: 0}
+  interact: {fileID: 0}
   isPlayerEquipped: 0
 --- !u!54 &8881102535892748636
 Rigidbody:
@@ -438,6 +441,20 @@ MonoBehaviour:
   isInteractable: 1
   distance: 10
   delay: 2
+--- !u!114 &42690311884166752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6968440582987685738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48fe2363988c0441ba6a0a9a710c3db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 10
+  audioType: 1
 --- !u!1 &6968440582987685740
 GameObject:
   m_ObjectHideFlags: 0
