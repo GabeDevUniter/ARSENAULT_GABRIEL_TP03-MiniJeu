@@ -16,16 +16,22 @@ public class AudioRange : MonoBehaviour
 
     private Collider[] colliders;
 
-    private Vector3 startPosition;
+    private Vector3 startPosition
+    {
+        get
+        {
+            switch (audioType)
+            {
+                case AudioType.NPC: return grunt.EyeTransform.position;
+
+                default: return transform.position;
+            }
+        }
+    }
 
     void Awake()
     {
-        switch (audioType)
-        {
-            case AudioType.NPC: grunt = GetComponent<Grunt>(); startPosition = grunt.EyeTransform.position; break;
-
-            default: startPosition = transform.position; break;
-        }
+        grunt = GetComponent<Grunt>();
     }
 
     public void Trigger()
