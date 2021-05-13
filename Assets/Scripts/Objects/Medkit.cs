@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 /// <summary>
 /// Medkit.
@@ -10,8 +11,35 @@ public class Medkit : MonoBehaviour
 
     public string Name { get { return "Trousse de soins."; } }
 
+    private AudioSource sfx;
+
+    private void Awake()
+    {
+        sfx = GetComponent<AudioSource>();
+    }
+
     public void Heal()
     {
         GameManager.singleton.PlayerLogic.AddHealth(Health);
+
+        StartCoroutine(PlaySound());
+    }
+
+    IEnumerator PlaySound()
+    {
+        if (sfx == null) Destroy(gameObject);
+
+        sfx.Play();
+
+        foreach(MeshRenderer renderer in GetComponentsInChildren<MeshRenderer>())
+        {
+            Destroy(renderer);
+        }
+
+        Destroy(GetComponent<BoxCollider>());
+
+        yield return new WaitForSeconds(sfx.clip.length);
+
+        Destroy(gameObject);
     }
 }
