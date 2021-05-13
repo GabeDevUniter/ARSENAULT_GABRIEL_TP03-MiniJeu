@@ -73,8 +73,6 @@ public class InteractionController : MonoBehaviour
 
                             GetComponent<Medkit>().Heal();
 
-                            Destroy(gameObject);
-
                             return;
                     }
 
