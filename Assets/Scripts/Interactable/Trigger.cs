@@ -9,6 +9,8 @@ public enum DoorOutput { Open, Close, Toggle }
 
 public enum MusicOutput { Play, Stop }
 
+public enum NPCOutput { SetIdle, SetAlert, SetCombat, StartPatrol, StopPatrol}
+
 public abstract class Triggerable : MonoBehaviour { }
 
 public class Trigger : MonoBehaviour
@@ -40,7 +42,7 @@ public class Trigger : MonoBehaviour
 
     #endregion
 
-    #region Music parameters
+    #region Music Parameters
 
     [HideInInspector]
     public MusicOutput musicOutput;
@@ -50,7 +52,17 @@ public class Trigger : MonoBehaviour
 
     #endregion
 
-    #region Private variables
+    #region NPC Parameters
+
+    [HideInInspector]
+    public NPCOutput npcOutput;
+
+    [HideInInspector]
+    public NPCMovement.MovementTypes movementType;
+
+    #endregion
+
+    #region Private Variables
 
     private bool canTrigger = true;
 
@@ -124,6 +136,23 @@ public class Trigger : MonoBehaviour
                 case MusicOutput.Stop: music.Stop(); break;
             }
         }
+        else if(target.GetType() == typeof(Grunt))
+        {
+            var npc = (Grunt)target;
+
+            switch(npcOutput)
+            {
+                case NPCOutput.SetIdle: npc._SetState(typeof(IdleState)); break;
+
+                case NPCOutput.SetAlert: npc._SetState(typeof(AlertState)); break;
+
+                case NPCOutput.SetCombat: npc._SetState(typeof(CombatState)); break;
+
+                case NPCOutput.StartPatrol: npc.Movement.StartPatrol(movementType); break;
+
+                case NPCOutput.StopPatrol: npc.Movement.StopPatrol(); break;
+            }
+        }
 
         //Debug.Log("TRIGGERED!");
 
@@ -158,6 +187,13 @@ public class TriggerEditor : Editor
 
                 if(trigger.musicOutput == MusicOutput.Play)
                     trigger.musicToPlay = (SongNames)EditorGUILayout.EnumPopup("Play", trigger.musicToPlay);
+            }
+            else if(trigger.target.GetType() == typeof(Grunt))
+            {
+                trigger.npcOutput = (NPCOutput)EditorGUILayout.EnumPopup("Output", trigger.npcOutput);
+
+                if (trigger.npcOutput == NPCOutput.StartPatrol)
+                    trigger.movementType = (NPCMovement.MovementTypes)EditorGUILayout.EnumPopup("Movement", trigger.movementType);
             }
 
         }
