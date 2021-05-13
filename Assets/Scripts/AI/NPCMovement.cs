@@ -18,6 +18,7 @@ public class NPCMovement : MonoBehaviour
     public float turnPointDuration = 5f;
 
     [Header("Patrol")]
+    public bool patrolOnTrigger = false;
     public PatrolPoint startingPoint;
 
     private float currentSpeed;
