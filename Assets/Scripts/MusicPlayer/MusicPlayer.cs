@@ -7,6 +7,12 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField]
     private bool startPlay = false;
 
+    [SerializeField]
+    private float fadeIn = 0.3f;
+
+    [SerializeField]
+    private float fadeOut = 0.3f;
+
     [Header("Song/Entry")]
     private AudioSource soundtrack;
 
@@ -25,6 +31,8 @@ public class MusicPlayer : MonoBehaviour
 
         segments = GetComponentsInChildren<AudioSource>();
         
+
+        // Remove the entry soundtrack from the segments array
         List<AudioSource> temp = new List<AudioSource>();
 
         foreach (AudioSource segment in segments)
@@ -35,30 +43,28 @@ public class MusicPlayer : MonoBehaviour
             if (segment.gameObject != gameObject) temp.Add(segment);
         }
 
-        segments = temp.ToArray(); // Remove the entry soundtrack from the segments array
+        segments = temp.ToArray();
+        //
 
         if (startPlay) Play();
     }
 
+    #region Play
+
     public void Play()
     {
-        Stop();
+        StopAllCoroutines();
+
+        stopAudio();
 
         StartCoroutine(PlaySong());
     }
 
-    public void Stop()
-    {
-        StopAllCoroutines();
-
-        if(soundtrack != null) soundtrack.Stop();
-
-        foreach (AudioSource segment in segments) segment.Stop();
-    }
-
     IEnumerator PlaySong()
     {
-        if(soundtrack != null)
+        StartCoroutine(LerpVolume(0, 1, fadeIn));
+
+        if (soundtrack != null)
         {
             soundtrack.Play();
 
@@ -67,9 +73,9 @@ public class MusicPlayer : MonoBehaviour
             yield return new WaitForSeconds(soundtrack.clip.length);
         }
 
-        while(segments.Length > 0)
+        while (segments.Length > 0)
         {
-            foreach(AudioSource segment in segments)
+            foreach (AudioSource segment in segments)
             {
                 segment.Play();
 
@@ -79,4 +85,64 @@ public class MusicPlayer : MonoBehaviour
             }
         }
     }
+
+    #endregion
+
+    #region Stop
+
+    public void Stop()
+    {
+        StopAllCoroutines();
+
+        StartCoroutine(StopRoutine());
+    }
+    
+    IEnumerator StopRoutine()
+    {
+        StartCoroutine(LerpVolume(1, 0, fadeOut));
+
+        yield return new WaitForSeconds(fadeOut);
+
+        stopAudio();
+    }
+
+    private void stopAudio()
+    {
+        if (soundtrack != null) soundtrack.Stop();
+
+        foreach (AudioSource segment in segments) segment.Stop();
+    }
+
+    #endregion
+
+    #region Volume
+
+    IEnumerator LerpVolume(float initial, float final, float duration)
+    {
+        float elapsed = 0f;
+
+        setVolume(initial);
+
+        while(elapsed < duration)
+        {
+            float lerp = Mathf.Lerp(initial, final, elapsed / duration);
+
+            setVolume(lerp);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        setVolume(final);
+    }
+
+    private void setVolume(float volume)
+    {
+        if (soundtrack != null) soundtrack.volume = volume;
+
+        foreach (AudioSource segment in segments) segment.volume = volume;
+    }
+
+    #endregion
 }
