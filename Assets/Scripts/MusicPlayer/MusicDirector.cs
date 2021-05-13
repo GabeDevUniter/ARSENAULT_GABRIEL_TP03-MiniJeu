@@ -2,17 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicDirector : MonoBehaviour
+// Names of the game's songs. The names must match with the name of the MusicPlayer's GameObject
+public enum SongNames { Prelude, InAction, LevelEnd}
+
+public class MusicDirector : Triggerable
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private Dictionary<string, MusicPlayer> songs = new Dictionary<string, MusicPlayer>();
+
+    void Awake()
     {
-        
+        MusicPlayer[] players = GetComponentsInChildren<MusicPlayer>();
+
+        foreach(MusicPlayer player in players)
+        {
+            songs.Add(player.gameObject.name, player);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Play(SongNames name)
     {
+        Play(System.Enum.GetName(typeof(SongNames), name));
+    }
+
+    public void Play(string name)
+    {
+        Stop();
         
+        songs[name].Play();
+    }
+
+    public void Stop()
+    {
+        foreach(MusicPlayer song in songs.Values)
+        {
+            song.Stop();
+        }
     }
 }
