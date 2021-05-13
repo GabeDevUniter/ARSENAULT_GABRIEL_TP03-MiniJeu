@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+public enum TriggerCondition { Collider, Interaction, LevelEnd, GameOver }
+
 public enum DoorOutput { Open, Close, Toggle }
 
 public enum MusicOutput { Play, Stop }
@@ -11,13 +13,22 @@ public abstract class Triggerable : MonoBehaviour { }
 
 public class Trigger : MonoBehaviour
 {
+    #region Public Fields
+
+    [Header("Trigger Settings")]
     public bool triggerOnce = true;
 
     public float delay = 0f;
 
+    public TriggerCondition condition;
+
+    [Header("Target Output")]
     public Triggerable target; // Main target, which is any script inheriting from Triggerable
 
-    // Door parameters
+    #endregion
+
+    #region Door Parameters
+
     [HideInInspector]
     public DoorOutput doorOutput;
 
@@ -26,32 +37,59 @@ public class Trigger : MonoBehaviour
 
     [HideInInspector]
     public bool doorForceMove; // Door will move wether it's locked or not
-    //
 
-    // Music parameters
+    #endregion
+
+    #region Music parameters
+
     [HideInInspector]
     public MusicOutput musicOutput;
 
     [HideInInspector]
     public SongNames musicToPlay;
-    //
 
-    // Private variables
+    #endregion
+
+    #region Private variables
+
     private bool canTrigger = true;
+
+    static private Dictionary<TriggerCondition, List<Trigger>> globalTriggers = new Dictionary<TriggerCondition, List<Trigger>>()
+    { 
+        { TriggerCondition.LevelEnd, new List<Trigger>() },
+        { TriggerCondition.GameOver, new List<Trigger>() }
+    };
+
+    #endregion
+
+    #region Unity Methods
+    private void Awake()
+    {
+        // Triggers with global conditions will be added to the static dictionary
+        if (condition == TriggerCondition.LevelEnd || condition == TriggerCondition.GameOver)
+            globalTriggers[condition].Add(this);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            setTrigger();
+            setTrigger(TriggerCondition.Collider);
         }
     }
+    #endregion
 
-    public void setTrigger()
+    public void setTrigger(TriggerCondition condition)
     {
-        if (!canTrigger || target == null) return;
+        if (!canTrigger || target == null || this.condition != condition) return;
 
         StartCoroutine(setTriggerRoutine());
+    }
+
+    static public void setTriggerGlobal(TriggerCondition condition)
+    {
+        foreach (Trigger trigger in globalTriggers[condition])
+            trigger.setTrigger(condition);
     }
 
     IEnumerator setTriggerRoutine()
@@ -75,11 +113,11 @@ public class Trigger : MonoBehaviour
 
             door.locked = doorLockOnMove;
         }
-        else if(target.GetType() == typeof(MusicDirector))
+        else if (target.GetType() == typeof(MusicDirector))
         {
             var music = (MusicDirector)target;
 
-            switch(musicOutput)
+            switch (musicOutput)
             {
                 case MusicOutput.Play: music.Play(musicToPlay); break;
 
@@ -114,13 +152,14 @@ public class TriggerEditor : Editor
 
                 trigger.doorForceMove = EditorGUILayout.Toggle("Force Move", trigger.doorForceMove);
             }
-            else if(trigger.target.GetType() == typeof(MusicDirector))
+            else if (trigger.target.GetType() == typeof(MusicDirector))
             {
                 trigger.musicOutput = (MusicOutput)EditorGUILayout.EnumPopup("Output", trigger.musicOutput);
 
-                trigger.musicToPlay = (SongNames)EditorGUILayout.EnumPopup("Play", trigger.musicToPlay);
+                if(trigger.musicOutput == MusicOutput.Play)
+                    trigger.musicToPlay = (SongNames)EditorGUILayout.EnumPopup("Play", trigger.musicToPlay);
             }
-            
+
         }
     }
 }
