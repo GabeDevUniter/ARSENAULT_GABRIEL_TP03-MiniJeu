@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Statemachine : MonoBehaviour
+public class Statemachine : Triggerable
 {
 
     private Dictionary<System.Type, BaseState> states;
