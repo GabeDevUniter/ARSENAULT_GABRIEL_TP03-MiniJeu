@@ -62,7 +62,7 @@ public class MusicPlayer : MonoBehaviour
         {
             soundtrack.Play();
 
-            Debug.Log($"Now playing: {soundtrack.clip.name}");
+            //Debug.Log($"Now playing: {soundtrack.clip.name}");
 
             yield return new WaitForSeconds(soundtrack.clip.length);
         }
@@ -73,7 +73,7 @@ public class MusicPlayer : MonoBehaviour
             {
                 segment.Play();
 
-                Debug.Log($"Now playing: {segment.clip.name}");
+                //Debug.Log($"Now playing: {segment.clip.name}");
 
                 yield return new WaitForSeconds(segment.clip.length);
             }
