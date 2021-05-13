@@ -76,7 +76,7 @@ public class InteractionController : MonoBehaviour
                             return;
                     }
 
-                    foreach (Trigger trigger in triggers) trigger.setTrigger();
+                    foreach (Trigger trigger in triggers) trigger.setTrigger(TriggerCondition.Interaction);
 
                     StartCoroutine(Cooldown());
                 }
