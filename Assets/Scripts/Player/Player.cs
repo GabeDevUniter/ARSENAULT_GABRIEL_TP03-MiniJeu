@@ -50,7 +50,9 @@ public class Player : MonoBehaviour
     private Dictionary<AmmoType, int> currentAmmo = new Dictionary<AmmoType, int>()
     {
         { AmmoType.Pistol, 20 },
-        { AmmoType.Rifle, 30 }
+        { AmmoType.Rifle, 30 },
+        { AmmoType.Rifle2, 0 },
+        { AmmoType.Revolver, 0 }
     };
 
     // Read-only property of the currentAmmo dictionary
@@ -61,7 +63,9 @@ public class Player : MonoBehaviour
     {
         { AmmoType.Pistol, 120 },
         { AmmoType.Shotgun, 30 },
-        { AmmoType.Rifle, 150 }
+        { AmmoType.Rifle, 150 },
+        { AmmoType.Rifle2, 150 },
+        { AmmoType.Revolver, 36 }
     };
     
     private PlayerMovement PlayerMovement;
