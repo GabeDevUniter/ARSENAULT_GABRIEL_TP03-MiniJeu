@@ -317,7 +317,8 @@ MonoBehaviour:
   doorTransform: {fileID: 8875574211433310366}
   orientation: -90
   speed: 150
-  lockOnOpen: 1
+  lockOnMove: 1
+  locked: 0
 --- !u!114 &198640329677908000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +348,7 @@ GameObject:
   - component: {fileID: 8882447969129464284}
   - component: {fileID: 8893878860785454032}
   - component: {fileID: 8763634630278998095}
+  - component: {fileID: 738301520325663455}
   m_Layer: 0
   m_Name: doorWing
   m_TagString: Untagged
@@ -429,6 +431,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.91890264, y: 1.9499999, z: 0.040926464}
   m_Center: {x: -0.4489162, y: 0.97499996, z: -0.011339112}
+--- !u!208 &738301520325663455
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879394401455451684}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.45900002, y: 0.975, z: 0.020000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: -0.44900003, y: 0.975, z: -0.011000001}
+  m_TimeToStationary: 0.5
 --- !u!1 &8879474352298415760
 GameObject:
   m_ObjectHideFlags: 0
