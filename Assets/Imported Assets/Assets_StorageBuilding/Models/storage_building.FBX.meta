@@ -60,7 +60,17 @@ ModelImporter:
   - first:
       205: 20500000
     second: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01 - Default
+    second: {fileID: 2100000, guid: e40c6a2076e30304697b8dd789df11ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 02 - Default
+    second: {fileID: 2100000, guid: 84fc48b8afd62ee499d2e2edf0b75d04, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -104,7 +114,7 @@ ModelImporter:
     importLights: 0
     fileIdsGeneration: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
