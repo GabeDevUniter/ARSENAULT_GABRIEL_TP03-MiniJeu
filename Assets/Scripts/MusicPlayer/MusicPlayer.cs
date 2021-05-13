@@ -64,7 +64,7 @@ public class MusicPlayer : MonoBehaviour
     {
         StartCoroutine(LerpVolume(0, 1, fadeIn));
 
-        if (soundtrack != null)
+        if (soundtrack != null && soundtrack.clip != null)
         {
             soundtrack.Play();
 
