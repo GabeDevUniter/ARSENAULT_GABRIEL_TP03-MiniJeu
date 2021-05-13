@@ -87,7 +87,7 @@ public class Trigger : MonoBehaviour
             }
         }
 
-        Debug.Log("TRIGGERED!");
+        //Debug.Log("TRIGGERED!");
 
         canTrigger = !triggerOnce;
     }
