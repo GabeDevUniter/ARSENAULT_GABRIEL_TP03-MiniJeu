@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum AmmoType { Pistol, Shotgun, Rifle }
+public enum AmmoType { Pistol, Shotgun, Rifle, Rifle2, Revolver }
 
 /// <summary>
 /// Stats of the weapon entity. All it does is storing values that can be
