@@ -8,16 +8,14 @@ public class MusicPlayer : MonoBehaviour
     private bool startPlay = false;
 
     [Header("Song/Entry")]
-    [SerializeField]
     private AudioSource soundtrack;
 
     [Header("Loop")]
-    [SerializeField]
     private AudioSource[] segments;
 
     void Awake()
     {
-        if (soundtrack == null) soundtrack = GetComponent<AudioSource>();
+        soundtrack = GetComponent<AudioSource>();
 
         if(soundtrack != null)
         {
@@ -25,11 +23,19 @@ public class MusicPlayer : MonoBehaviour
             soundtrack.playOnAwake = false;
         }
 
-        foreach(AudioSource segment in segments)
+        segments = GetComponentsInChildren<AudioSource>();
+        
+        List<AudioSource> temp = new List<AudioSource>();
+
+        foreach (AudioSource segment in segments)
         {
             segment.loop = false;
             segment.playOnAwake = false;
+
+            if (segment.gameObject != gameObject) temp.Add(segment);
         }
+
+        segments = temp.ToArray(); // Remove the entry soundtrack from the segments array
 
         if (startPlay) Play();
     }
@@ -45,7 +51,7 @@ public class MusicPlayer : MonoBehaviour
     {
         StopAllCoroutines();
 
-        soundtrack.Stop();
+        if(soundtrack != null) soundtrack.Stop();
 
         foreach (AudioSource segment in segments) segment.Stop();
     }
