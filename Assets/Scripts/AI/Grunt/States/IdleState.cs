@@ -16,7 +16,7 @@ public class IdleState : BaseState
     {
         movement.SetMode(NPCMovement.MoveMode.Idle);
 
-        movement.StartPatrol(NPCMovement.MovementTypes.Walk);
+        if(!movement.patrolOnTrigger) movement.StartPatrol(NPCMovement.MovementTypes.Walk);
     }
 
     public override void Tick()
