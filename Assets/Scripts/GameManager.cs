@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
     {
         StopTimer();
 
+        Trigger.setTriggerGlobal(win ? TriggerCondition.LevelEnd : TriggerCondition.GameOver);
+
         GUI.Timer.color = win ? Color.green : Color.red;
 
         GUI.EndMessage.text = win ? "Tous les ennemis sont mort." : "Vous êtes mort.";
