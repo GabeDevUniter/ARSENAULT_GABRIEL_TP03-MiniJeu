@@ -216,7 +216,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4040168470910954623, guid: ea558454e52e81747ae57e065b509b00,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3031ac8419d94b643ba346147a555da4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 399e7520618b7a745bc48b7465acc6d8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -444,7 +444,7 @@ MonoBehaviour:
   weaponIndex: 1
   _mag: 6
   currentAmmo: 8
-  ammoType: 0
+  ammoType: 4
   logic: {fileID: 0}
   interact: {fileID: 0}
   isPlayerEquipped: 0
