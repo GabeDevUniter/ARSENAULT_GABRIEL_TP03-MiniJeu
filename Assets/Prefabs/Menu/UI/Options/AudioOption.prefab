@@ -535,8 +535,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 7146794495686813343}
   m_HandleRect: {fileID: 7146794494906825253}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 10
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -552,6 +552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7146794495479440005}
   - component: {fileID: 7146794495479440004}
+  - component: {fileID: 4008387829403334809}
   m_Layer: 5
   m_Name: AudioOption
   m_TagString: Untagged
@@ -606,6 +607,20 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &4008387829403334809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7146794495479440002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa44bf3e24cc19e4e8114bdf0916ed46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioMixer: {fileID: 24100000, guid: ea558454e52e81747ae57e065b509b00, type: 2}
+  audio: 0
 --- !u!1 &7146794495638982867
 GameObject:
   m_ObjectHideFlags: 0
