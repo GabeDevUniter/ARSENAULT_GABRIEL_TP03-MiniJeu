@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
     #region Fields and properties
 
     //Singleton//
-    
+
     public static GameManager singleton;
 
     //
+
+    public bool inGame = true;
 
     //Player//
 
@@ -59,7 +61,11 @@ public class GameManager : MonoBehaviour
             _playerMovement = Player.GetComponent<PlayerMovement>();
         }
 
-        Timer = StartCoroutine(StartTimer());
+        if (inGame) Timer = StartCoroutine(StartTimer());
+
+#if !UNITY_EDITOR && UNITY_WEBGL
+        UnityEngine.WebGLInput.captureAllKeyboardInput = false;
+#endif
 
         singleton = this;
     }
