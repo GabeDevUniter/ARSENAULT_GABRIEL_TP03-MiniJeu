@@ -37,12 +37,15 @@ public class InteractionController : MonoBehaviour
         mainCam = Camera.main;
 
         triggers = GetComponents<Trigger>();
-    }
 
+        
+    }
 
     void Update()
     {
-        if(isInteractable && Vector3.Distance(interactGameObject.transform.position, GameManager.singleton.PlayerHead) <= distance)
+        if (GameManager.singleton == null) return;
+        
+        if (isInteractable && Vector3.Distance(interactGameObject.transform.position, GameManager.singleton.PlayerHead) <= distance)
         {
             // Code to add UI text to the interaction's origin
 
