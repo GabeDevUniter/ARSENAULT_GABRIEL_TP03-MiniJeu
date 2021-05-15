@@ -10,7 +10,7 @@ public class Grunt : Statemachine
 {
     #region Fields and properties
 
-    static private int GruntCount = 0;
+    static public int GruntCount = 0;
 
     public bool IsDead { get; private set; } = false;
 
