@@ -80,6 +80,8 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        isDead = false;
+
         PlayerMovement = GetComponent<PlayerMovement>();
         
         Cam = GetComponentInChildren<Camera>();
