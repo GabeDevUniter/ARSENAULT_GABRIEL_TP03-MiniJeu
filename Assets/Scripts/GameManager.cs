@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Game Manager
@@ -15,6 +16,10 @@ public class GameManager : MonoBehaviour
     //
 
     public bool inGame = true;
+
+    public bool IsGameEnded { get; private set; } = false;
+
+    public bool IsGameOver { get; private set; } = false;
 
     //Player//
 
@@ -70,9 +75,29 @@ public class GameManager : MonoBehaviour
         singleton = this;
     }
 
+    private void Update()
+    {
+        if (IsGameOver && Input.GetKey(KeyCode.R))
+        {
+            ResetLevel();
+        }
+    }
+
     #endregion
 
     #region Game Methods
+
+    public void ChangeLevel(string name)
+    {
+        ResetStaticVariables();
+
+        SceneManager.LoadScene(name);
+    }
+
+    public void ResetLevel()
+    {
+        ChangeLevel(SceneManager.GetActiveScene().name);
+    }
 
     public void GameOver(bool win)
     {
@@ -83,6 +108,16 @@ public class GameManager : MonoBehaviour
         GUI.Timer.color = win ? Color.green : Color.red;
 
         GUI.EndMessage.text = win ? "Tous les ennemis sont mort." : "Vous êtes mort.";
+
+        IsGameEnded = win;
+        IsGameOver = !win;
+    }
+
+    void ResetStaticVariables()
+    {
+        singleton = null;
+
+        Grunt.GruntCount = 0;
     }
 
     #endregion
