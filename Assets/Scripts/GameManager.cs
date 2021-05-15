@@ -66,6 +66,9 @@ public class GameManager : MonoBehaviour
             _playerMovement = Player.GetComponent<PlayerMovement>();
         }
 
+        Cursor.visible = !inGame;
+        Cursor.lockState = inGame ? CursorLockMode.Locked : CursorLockMode.None;
+
         if (inGame) Timer = StartCoroutine(StartTimer());
 
 #if !UNITY_EDITOR && UNITY_WEBGL
