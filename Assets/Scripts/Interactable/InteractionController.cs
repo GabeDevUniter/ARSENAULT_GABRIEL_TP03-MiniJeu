@@ -52,7 +52,7 @@ public class InteractionController : MonoBehaviour
 
             if(Input.GetKeyDown(KeyCode.E))
             {
-                Ray mouseRay = mainCam.ScreenPointToRay(Input.mousePosition);
+                Ray mouseRay = mainCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
                 if(Physics.Raycast(mouseRay, out RaycastHit hit) && hit.collider == interactCollider)
                 {
