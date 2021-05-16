@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     public GUI_Logic GUI;
 
+    private PauseMenu pauseMenu;
+
     //
 
     //Timer//
@@ -56,7 +58,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         if (singleton != null) return;
-
+        
         Player = GameObject.FindGameObjectWithTag("Player");
 
         if (Player != null)
@@ -66,8 +68,8 @@ public class GameManager : MonoBehaviour
             _playerMovement = Player.GetComponent<PlayerMovement>();
         }
 
-        Cursor.visible = !inGame;
-        Cursor.lockState = inGame ? CursorLockMode.Locked : CursorLockMode.None;
+        SetCursorMode(inGame);
+        
 
         if (inGame) Timer = StartCoroutine(StartTimer());
 
@@ -76,14 +78,18 @@ public class GameManager : MonoBehaviour
 #endif
 
         singleton = this;
+
+        pauseMenu = FindObjectOfType<PauseMenu>();
+        if(pauseMenu != null) pauseMenu.Unpause();
     }
 
     private void Update()
     {
-        if (IsGameOver && Input.GetKey(KeyCode.R))
+        if (IsGameOver && Input.GetKeyDown(KeyCode.R))
         {
             ResetLevel();
         }
+        else if (pauseMenu != null && Input.GetKeyDown(KeyCode.P)) pauseMenu.TogglePause();
     }
 
     #endregion
@@ -102,6 +108,13 @@ public class GameManager : MonoBehaviour
         ChangeLevel(SceneManager.GetActiveScene().name);
     }
 
+    void ResetStaticVariables()
+    {
+        singleton = null;
+
+        Grunt.GruntCount = 0;
+    }
+
     public void GameOver(bool win)
     {
         StopTimer();
@@ -116,11 +129,10 @@ public class GameManager : MonoBehaviour
         IsGameOver = !win;
     }
 
-    void ResetStaticVariables()
+    public void SetCursorMode(bool firstPerson)
     {
-        singleton = null;
-
-        Grunt.GruntCount = 0;
+        Cursor.visible = !firstPerson;
+        Cursor.lockState = firstPerson ? CursorLockMode.Locked : CursorLockMode.None;
     }
 
     #endregion
