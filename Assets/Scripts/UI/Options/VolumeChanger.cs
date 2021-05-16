@@ -18,7 +18,9 @@ public class VolumeChanger : MonoBehaviour
 
     private Toggle toggle;
 
-    private float currentAudio { get { return slider.value; } }
+    static Dictionary<MixerAudio, float> CurrentAudio = new Dictionary<MixerAudio, float>();
+
+    static Dictionary<MixerAudio, bool> MuteAudio = new Dictionary<MixerAudio, bool>();
 
     private string audioName;
 
@@ -28,15 +30,47 @@ public class VolumeChanger : MonoBehaviour
 
         audioName = System.Enum.GetName(typeof(MixerAudio), mixerAudio);
 
-        AudioMixer.GetFloat(audioName, out float currentValue);
+        if(CurrentAudio.ContainsKey(mixerAudio))
+        {
+            slider.value = CurrentAudio[mixerAudio];
+        }
+        else
+        {
+            AudioMixer.GetFloat(audioName, out float currentValue);
 
-        slider.value = currentValue;
+            slider.value = currentValue;
+        }
 
         slider.onValueChanged.AddListener(SetVolume);
 
         toggle = GetComponentInChildren<Toggle>();
 
+        if (MuteAudio.ContainsKey(mixerAudio))
+        {
+            toggle.isOn = MuteAudio[mixerAudio];
+        }
+
         toggle.onValueChanged.AddListener(ToggleVolume);
+
+        InitializeDictionaries();
+    }
+
+    private void Update()
+    {
+        CurrentAudio[mixerAudio] = slider.value;
+        MuteAudio[mixerAudio] = toggle.isOn;
+    }
+
+    void InitializeDictionaries()
+    {
+        if(!CurrentAudio.ContainsKey(mixerAudio))
+        {
+            CurrentAudio.Add(mixerAudio, slider.value);
+        }
+        if(!MuteAudio.ContainsKey(mixerAudio))
+        {
+            MuteAudio.Add(mixerAudio, toggle.isOn);
+        }
     }
 
     void SetVolume(float value)
@@ -46,6 +80,6 @@ public class VolumeChanger : MonoBehaviour
 
     void ToggleVolume(bool value)
     {
-        AudioMixer.SetFloat(audioName, value ? currentAudio : -80f);
+        AudioMixer.SetFloat(audioName, value ? CurrentAudio[mixerAudio] : -80f);
     }
 }
