@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        MoveCam();
+        if(!PauseMenu.IsPaused) MoveCam();
     }
 
     private void FixedUpdate()
