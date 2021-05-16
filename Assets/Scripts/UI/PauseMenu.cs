@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        GameManager.singleton.SetCursorMode(false);
+        if (GameManager.singleton != null) GameManager.singleton.SetCursorMode(false);
 
         menu.Open();
 
@@ -39,7 +39,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Unpause()
     {
-        GameManager.singleton.SetCursorMode(true);
+        if(GameManager.singleton != null) GameManager.singleton.SetCursorMode(true);
 
         menu.Close();
 
