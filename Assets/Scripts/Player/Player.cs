@@ -99,6 +99,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenu.IsPaused) return;
+
         if(currentWeapon == null || currentWeapon.logic.CanSwitch)
         {
             foreach (KeyCode key in weaponInput)
