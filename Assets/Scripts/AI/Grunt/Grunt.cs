@@ -69,7 +69,7 @@ public class Grunt : Statemachine
 
     // Player
 
-    public Vector3 PlayerHead { get { return GameManager.singleton.PlayerHead; } }
+    public Vector3 PlayerHead { get { return GameManager.singleton != null ? GameManager.singleton.PlayerHead : default; } }
 
     static private Vector3 tempPlayerHead;
     static private Quaternion TurnRotation;
