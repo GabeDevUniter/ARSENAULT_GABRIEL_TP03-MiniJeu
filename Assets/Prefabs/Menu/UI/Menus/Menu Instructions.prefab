@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 350.30844}
+  m_SizeDelta: {x: 0, y: 416.45908}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8467075855597987631
 CanvasRenderer:
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Text: "WASD: D\xE9placer le personnage\n\nClic gauche: Tirer\n\n2-3: S\xE9lectionner
     une arme (2 pour les armes de poing, 3 pour les fusils d'assaut)\n\nR: Recharger
     l'arme actuelle/Recommencer le niveau (si vous \xEAtes mort)\n\nE: Interagir/Ramasser
-    un objet"
+    un objet\n\nP: Mettre sur pause"
 --- !u!1 &6553453021047994621
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +330,7 @@ PrefabInstance:
     - target: {fileID: 6397838195421996456, guid: cac31eba40556ee45b746bb1c90cb438,
         type: 3}
       propertyPath: m_Name
-      value: MenuInstructions Variant
+      value: Menu Instructions
       objectReference: {fileID: 0}
     - target: {fileID: 6397838195421996457, guid: cac31eba40556ee45b746bb1c90cb438,
         type: 3}
@@ -375,7 +375,7 @@ PrefabInstance:
     - target: {fileID: 6397838195421996457, guid: cac31eba40556ee45b746bb1c90cb438,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 660.3716
+      value: 716.0774
       objectReference: {fileID: 0}
     - target: {fileID: 6397838195421996457, guid: cac31eba40556ee45b746bb1c90cb438,
         type: 3}
@@ -420,7 +420,7 @@ PrefabInstance:
     - target: {fileID: 6397838195421996457, guid: cac31eba40556ee45b746bb1c90cb438,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -130.2
+      value: -158.1
       objectReference: {fileID: 0}
     - target: {fileID: 6397838195421996457, guid: cac31eba40556ee45b746bb1c90cb438,
         type: 3}
