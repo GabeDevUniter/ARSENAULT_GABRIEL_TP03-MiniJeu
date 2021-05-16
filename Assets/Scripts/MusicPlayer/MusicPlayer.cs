@@ -70,7 +70,7 @@ public class MusicPlayer : MonoBehaviour
 
             //Debug.Log($"Now playing: {soundtrack.clip.name}");
 
-            yield return new WaitForSeconds(soundtrack.clip.length);
+            while (soundtrack.time != soundtrack.clip.length) yield return null;
         }
 
         while (segments.Length > 0)
@@ -81,7 +81,7 @@ public class MusicPlayer : MonoBehaviour
 
                 //Debug.Log($"Now playing: {segment.clip.name}");
 
-                yield return new WaitForSeconds(segment.clip.length);
+                while (segment.time != segment.clip.length) yield return null;
             }
         }
     }
