@@ -57,6 +57,10 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+#if !UNITY_EDITOR && UNITY_WEBGL
+        UnityEngine.WebGLInput.captureAllKeyboardInput = true;
+#endif
+
         if (singleton != null) return;
         
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -73,14 +77,15 @@ public class GameManager : MonoBehaviour
 
         if (inGame) Timer = StartCoroutine(StartTimer());
 
-#if !UNITY_EDITOR && UNITY_WEBGL
-        UnityEngine.WebGLInput.captureAllKeyboardInput = false;
-#endif
+
 
         singleton = this;
+    }
 
+    private void Start()
+    {
         pauseMenu = FindObjectOfType<PauseMenu>();
-        if(pauseMenu != null) pauseMenu.Unpause();
+        if (pauseMenu != null) pauseMenu.Unpause();
     }
 
     private void Update()
