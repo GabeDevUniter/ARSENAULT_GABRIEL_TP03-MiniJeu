@@ -5,9 +5,15 @@ using UnityEngine;
 // Names of the game's songs. The names must match with the name of the MusicPlayer's GameObject
 public enum SongNames { Prelude, InAction, LevelEnd}
 
+/// <summary>
+/// Main director for the music players. It stores every MusicPlayer in the
+/// scene and decides who should play and who should stop
+/// </summary>
 public class MusicDirector : Triggerable
 {
 
+    // Dictionary containing the MusicPlayer scripts which can be accessed by their
+    // GameObjects' name
     private Dictionary<string, MusicPlayer> songs = new Dictionary<string, MusicPlayer>();
 
     void Awake()
