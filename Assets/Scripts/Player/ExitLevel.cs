@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Exit the level
+/// </summary>
 public class ExitLevel : MonoBehaviour
 {
     [SerializeField]
