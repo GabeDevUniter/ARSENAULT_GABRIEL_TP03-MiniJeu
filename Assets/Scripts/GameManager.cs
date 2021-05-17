@@ -128,12 +128,16 @@ public class GameManager : MonoBehaviour
 
         GUI.Timer.color = win ? Color.green : Color.red;
 
-        GUI.EndMessage.text = win ? "Tous les ennemis sont mort." : "Vous êtes mort.";
+        GUI.EndMessage.text = win ? "Tous les ennemis sont mort.\nRetournez à votre voiture" : "Vous êtes mort.\nAppuyez sur R pour recommencer";
 
         IsGameEnded = win;
         IsGameOver = !win;
     }
 
+    /// <summary>
+    /// Simple method to set the cursor mode
+    /// </summary>
+    /// <param name="firstPerson">If in first person, locks the cursor. If not, cursor is free</param>
     public void SetCursorMode(bool firstPerson)
     {
         Cursor.visible = !firstPerson;
