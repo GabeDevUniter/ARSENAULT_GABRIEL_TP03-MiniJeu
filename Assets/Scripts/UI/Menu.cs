@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Simple script to define the root of the menu
+/// </summary>
 public class Menu : MonoBehaviour
 {
     public void Open()
