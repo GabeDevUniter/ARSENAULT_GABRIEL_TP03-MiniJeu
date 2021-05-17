@@ -4,6 +4,10 @@ using UnityEngine;
 
 public enum AudioType { NPC, Weapon }
 
+
+/// <summary>
+/// Makes the NPCs react to sound from either a weapon or another NPC
+/// </summary>
 public class AudioRange : MonoBehaviour
 {
     [SerializeField]
