@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Main script for the main menu animations
+/// </summary>
 public class MainMenuAnimation : MonoBehaviour
 {
     [Header("Delay")]
@@ -28,7 +31,7 @@ public class MainMenuAnimation : MonoBehaviour
     {
         gr = GetComponent<GraphicRaycaster>();
 
-        gr.enabled = false;
+        gr.enabled = false; // Don't interact with the buttons while it's animating
 
         StartCoroutine(Animate());
     }
