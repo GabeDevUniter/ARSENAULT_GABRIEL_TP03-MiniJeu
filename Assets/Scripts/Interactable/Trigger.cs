@@ -11,8 +11,15 @@ public enum MusicOutput { Play, Stop }
 
 public enum NPCOutput { SetIdle, SetAlert, SetCombat, StartPatrol, StopPatrol}
 
+// Only the Monoscripts inheriting the Triggerable class can be affected by triggers
 public abstract class Triggerable : MonoBehaviour { }
 
+
+/// <summary>
+/// Trigger script to execute outputs under certain conditions.
+/// This script is highly important as it can make the level more dynamic, and
+/// also detects when the level is over.
+/// </summary>
 public class Trigger : MonoBehaviour
 {
     #region Public Fields
@@ -66,6 +73,7 @@ public class Trigger : MonoBehaviour
 
     private bool canTrigger = true;
 
+    // Static dictionary to store the global triggers.
     static private Dictionary<TriggerCondition, List<Trigger>> globalTriggers = new Dictionary<TriggerCondition, List<Trigger>>()
     { 
         { TriggerCondition.LevelEnd, new List<Trigger>() },
@@ -160,6 +168,8 @@ public class Trigger : MonoBehaviour
     }
 }
 
+#region Custom Inspector
+
 #if UNITY_EDITOR
 [CustomEditor(typeof(Trigger))]
 public class TriggerEditor : Editor
@@ -201,3 +211,5 @@ public class TriggerEditor : Editor
     }
 }
 #endif
+
+#endregion
