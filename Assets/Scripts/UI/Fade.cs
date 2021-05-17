@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Screen fade
+/// </summary>
 public class Fade : MonoBehaviour
 {
     [Header("Standard Settings")]
@@ -36,6 +39,7 @@ public class Fade : MonoBehaviour
 
         Image fade = GetComponent<Image>();
 
+        // Make the fade visible or invisible depending on the startOn's value
         fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, 255f * System.Convert.ToInt32(startOn));
 
         if (startFadeOut) StartCoroutine(StartFade());
