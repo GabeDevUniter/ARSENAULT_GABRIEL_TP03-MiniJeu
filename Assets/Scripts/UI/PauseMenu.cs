@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Special menu script for the pause menu
+/// </summary>
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField]
@@ -19,11 +22,6 @@ public class PauseMenu : MonoBehaviour
         menu = GetComponent<Menu>();
 
         btnQuit.onClick.AddListener(onQuit);
-    }
-
-    void Update()
-    {
-        //if (Input.GetKey(KeyCode.P)) TogglePause();
     }
 
     public void Pause()
@@ -56,7 +54,7 @@ public class PauseMenu : MonoBehaviour
 
     void onQuit()
     {
-        Unpause();
+        Unpause(); // Prevent the game from freezing when changing level
 
         GameManager.singleton.ChangeLevel("Main");
     }
