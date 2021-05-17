@@ -20,6 +20,8 @@ public class Medkit : MonoBehaviour
 
     public void Heal()
     {
+        if (GameManager.singleton.PlayerLogic.Health == GameManager.singleton.PlayerLogic.MaxHealth) return;
+
         GameManager.singleton.PlayerLogic.AddHealth(Health);
 
         StartCoroutine(PlaySound());
