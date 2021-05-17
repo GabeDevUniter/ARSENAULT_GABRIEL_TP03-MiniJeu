@@ -206,6 +206,7 @@ public class WeaponLogic : MonoBehaviour
         direction.x += spread;
         direction.z += spread;
 
+        // Happy little binary logics to define which layers should react to the bullets
         int layermask = 1 << LayerMask.NameToLayer("Player") |
             1 << LayerMask.NameToLayer("Item") |
             1 << LayerMask.NameToLayer("Default") |
