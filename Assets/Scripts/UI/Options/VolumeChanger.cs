@@ -6,6 +6,9 @@ using UnityEngine.Audio;
 
 public enum MixerAudio { Music, SFX, Dialog}
 
+/// <summary>
+/// Changing a certain audio mixer group's volume
+/// </summary>
 public class VolumeChanger : MonoBehaviour
 {
     [SerializeField]
