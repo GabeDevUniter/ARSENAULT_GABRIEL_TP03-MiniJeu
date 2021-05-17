@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controlling the police sirens
+/// </summary>
 public class SirenController : MonoBehaviour
 {
     [Header("Lights")]
