@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Door script. For opening doors
+/// </summary>
 public class Door : Triggerable
 {
+    // Fields
     [Header("Settings")]
     [SerializeField]
     private Transform doorTransform;
@@ -16,9 +20,11 @@ public class Door : Triggerable
 
     [SerializeField]
     private bool lockOnMove = true; // Will lock when the door either opens or closes
-
+    
     public bool locked = false;
+    //
 
+    // Private variables
     private bool isMoving = false;
 
     private bool currentState = false; // false = Closed ; true = Open
@@ -26,6 +32,7 @@ public class Door : Triggerable
     private Vector3 originAngles;
 
     private OcclusionPortal portal;
+    //
 
     private void Awake()
     {
@@ -61,6 +68,11 @@ public class Door : Triggerable
         }
     }
 
+    /// <summary>
+    /// Return the orientation of the door at a certain direction
+    /// </summary>
+    /// <param name="direction"></param>
+    /// <returns></returns>
     private Vector3 GetOrientation(int direction)
     {
         Vector3 currentAngles = doorTransform.rotation.eulerAngles;
@@ -70,6 +82,12 @@ public class Door : Triggerable
         return currentAngles;
     }
 
+    /// <summary>
+    /// Main coroutine to move the door
+    /// </summary>
+    /// <param name="start">Current door orientation</param>
+    /// <param name="end">Final door orientation</param>
+    /// <returns></returns>
     IEnumerator DoorMove(Vector3 start, Vector3 end)
     {
         isMoving = true;
