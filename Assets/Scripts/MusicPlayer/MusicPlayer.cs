@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Main music player script. It features an entry audio piece and
+/// multiple loop segments
+/// </summary>
 public class MusicPlayer : MonoBehaviour
 {
     [SerializeField]
@@ -23,6 +27,8 @@ public class MusicPlayer : MonoBehaviour
     {
         soundtrack = GetComponent<AudioSource>();
 
+        // Deactivate the loop and playOnAwake for every AudioSource
+        // since the script already takes care of that
         if(soundtrack != null)
         {
             soundtrack.loop = false;
