@@ -436,7 +436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8777743581100139500
 Transform:
   m_ObjectHideFlags: 0
@@ -1861,7 +1861,8 @@ MonoBehaviour:
   - {fileID: 8302805857770885986}
   - {fileID: 6641301015213810003}
   isOn: 1
-  delay: 0.5
+  alternate: 1
+  delay: 0.2
   minRange: 5
   minIntensity: 1
   maxRange: 5
