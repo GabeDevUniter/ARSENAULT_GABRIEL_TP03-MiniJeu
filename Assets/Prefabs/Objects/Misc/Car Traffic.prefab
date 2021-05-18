@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 3140174750273807590}
   - component: {fileID: 1174184826313062748}
   m_Layer: 0
-  m_Name: Car traffic
+  m_Name: Car Traffic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,6 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1445a4d9b9b4b05a5884fdb2b7ed30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOn: 1
+  minInterval: 4
+  maxInterval: 10
+  speed: 0.6
 --- !u!1 &3140174750709891774
 GameObject:
   m_ObjectHideFlags: 0
