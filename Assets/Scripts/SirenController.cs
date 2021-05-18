@@ -26,6 +26,9 @@ public class SirenController : MonoBehaviour
     private bool isOn = true;
 
     [SerializeField]
+    private bool alternate = true;
+
+    [SerializeField]
     private float delay = 0.5f;
 
     [SerializeField]
@@ -46,6 +49,8 @@ public class SirenController : MonoBehaviour
 
     private bool currentSide = false;
 
+    private bool currentAlternate = true; // currentAlternate = red ; !currentAlternate = blue
+
     private void Awake()
     {
         Range[0] = minRange;
@@ -57,7 +62,8 @@ public class SirenController : MonoBehaviour
 
     void Update()
     {
-        if (isOn && !isBlinking) StartCoroutine(Blink());
+        if (isOn && alternate && !isAlternating) StartCoroutine(Alternate());
+        else if (isOn && !isBlinking && !alternate) StartCoroutine(Blink());
     }
 
 
@@ -78,15 +84,41 @@ public class SirenController : MonoBehaviour
         isBlinking = false;
     }
 
+    private bool isAlternating = false;
+    IEnumerator Alternate()
+    {
+        isAlternating = true;
+
+        SetLight(RedLight, RedPoints, 1);
+        SetLight(BlueLight, BluePoints, 1);
+
+        RedLight.enabled = currentAlternate;
+        BlueLight.enabled = !currentAlternate;
+
+        currentAlternate = !currentAlternate;
+
+        yield return new WaitForSeconds(delay);
+
+        isAlternating = false;
+    }
+
+    /// <summary>
+    /// Change the position of the lights for better visuals
+    /// </summary>
+    /// <param name="light"></param>
+    /// <param name="points"></param>
     private void alterLight(Light light, Transform[] points)
     {
-        int index = System.Convert.ToInt16(currentSide);
+        SetLight(light, points, System.Convert.ToInt16(currentSide));
+    }
 
+    private void SetLight(Light light, Transform[] points, int index)
+    {
         light.transform.position = points[index].position;
         light.transform.rotation = points[index].rotation;
 
         light.range = Range[index];
-        
+
         light.intensity = Intensity[index];
     }
 }
